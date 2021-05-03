@@ -12,6 +12,7 @@ const initialState = {
     { id: 2, title: 'Dread Doctor', category: 'Horror' },
     { id: 3, title: 'E.T', category: 'Sci-Fi' },
     { id: 4, title: 'The Book of Negroes', category: 'History' },
+    { id: 5, title: 'Barak Obama', category: 'Biography' },
   ]
 }
 
