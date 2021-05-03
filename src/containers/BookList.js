@@ -7,7 +7,8 @@ import { removeBook } from '../actions/index'
 
 const BookList = ({ books, removeBook }) => {
   const bookItems = books.map(book => (
-    <Book key={book.id} book={book} handleRemove={handleRemoveBook} />));
+    <Book key={book.id} book={book} handleRemove={handleRemoveBook} />
+  ));
 
   const handleRemoveBook = book => {
     removeBook(book);
