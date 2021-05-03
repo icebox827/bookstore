@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Book from '../components/Book';
+import { removeBook } from '../actions/index'
 
 const BookList = ({ books }) => {
   const bookItems = books.map(book => <Book key={book.id} book={book} />);
