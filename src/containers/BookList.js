@@ -43,7 +43,7 @@ BookList.propTypes = {
 };
 
 BookList.defaultProps = {
-  book: [],
+  books: [],
 };
 
 const mapStateToProps = state => ({
