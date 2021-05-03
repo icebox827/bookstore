@@ -1,8 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useState} from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const BookForm = () => {
-  const category = [
+import { addBook } from '../actions/index'
+
+const BookForm = ({ addBook }) => {
+  const categories = [
     'Action',
     'Biography',
     'History',
@@ -11,7 +14,12 @@ const BookForm = () => {
     'Learning',
     'Sci-Fi'
   ]
-  // const selectedCategory = 
+
+  const selectedCategories = categories.map(category => key={category});
+
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+
   return (
     <div>
       <form>
@@ -22,15 +30,19 @@ const BookForm = () => {
           <br />
           <br />
           <select>
-            <option></option>
+            <option>{selectedCategories}</option>
           </select>
-          <button type='submit' value='submit'>
+          <button type='submit' className="btn">
             Submit
           </button>
         </fieldset>
       </form>
     </div>
   )
+};
+
+BookForm.propTypes = {
+  addBook: PropTypes.func.isRequired,
 }
 
-export default BookForm;
+export default connect(null, {addBook})(BookForm);
