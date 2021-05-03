@@ -1,4 +1,4 @@
-import { CREATE_BOOK, DELETE_BOOK } from './action';
+import { CREATE_BOOK, REMOVE_BOOK } from './action';
 
 const addBook = book => ({
     type: CREATE_BOOK,
@@ -6,7 +6,7 @@ const addBook = book => ({
 });
 
 const deleteBook = book => ({
-    type: DELETE_BOOK,
+    type: REMOVE_BOOK,
     payload: book,
 });
 
