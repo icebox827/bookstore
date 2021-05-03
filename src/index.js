@@ -8,11 +8,11 @@ import rootReducer from './reducers';
 
 const initialState = {
   books: [
-    { id: 1, title: 'Mobby Dick', category: 'Kids' },
-    { id: 2, title: 'Dread Doctor', category: 'Horror' },
-    { id: 3, title: 'E.T', category: 'Sci-Fi' },
-    { id: 4, title: 'The Book of Negroes', category: 'History' },
-    { id: 5, title: 'Barak Obama', category: 'Biography' },
+    { id: Math.floor((Math.random() * 10000) + 1), title: 'Mobby Dick', category: 'Kids' },
+    { id: Math.floor((Math.random() * 10000) + 1), title: 'Dread Doctor', category: 'Horror' },
+    { id: Math.floor((Math.random() * 10000) + 1), title: 'E.T', category: 'Sci-Fi' },
+    { id: Math.floor((Math.random() * 10000) + 1), title: 'The Book of Negroes', category: 'History' },
+    { id: Math.floor((Math.random() * 10000) + 1), title: 'Barak Obama', category: 'Biography' },
   ]
 }
 
