@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# React Calculator
+# React Bookstore
 
 > This is a a bookstore built with React and Redux
 
