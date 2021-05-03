@@ -15,7 +15,7 @@ const BookForm = ({ addBook }) => {
     'Sci-Fi'
   ]
 
-  const selectedCategories = categories.map(category => key={category});
+  const selectedCategories = categories.map(category => <option key={category}>{category}</option>);
 
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
@@ -25,12 +25,26 @@ const BookForm = ({ addBook }) => {
       <form>
         <fieldset>
           <legend>Add Book</legend>
-          <label>Book Title</label>
-          <input type='text' id='book' className='book' />
+          <label className="form-label">Book Title</label>
+          <input 
+            type='text' 
+            id='text'
+            className='inputbook'
+            placeholder="Please enter the book title" 
+            onChange={e => setTitle(e.target.value)}
+            value={title}
+          />
           <br />
           <br />
-          <select>
-            <option>{selectedCategories}</option>
+          <label className="form-label">Select a category</label>
+          <select
+            className="option"
+            id="category"
+            name="category"
+            onChange={e => setCategory(e.target.value)}
+            value={category}
+          >
+            {selectedCategories}
           </select>
           <button type='submit' className="btn">
             Submit

@@ -1,12 +1,12 @@
 import BookList from '../containers/BookList';
-import BooForm from '../containers/BookForm';
+import BooKForm from '../containers/BookForm';
 import '../App.css';
 
 function App() {
   return (
     <div className="App">
       <BookList />
-      <BooForm />
+      <BooKForm />
     </div>
   );
 }
