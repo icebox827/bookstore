@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Book = ({ book, handleRemoveBook }) => {
+const Book = ({ book, handleRemove }) => {
   const { id, title, category } = book;
   return (
     <div className="book-container flex">
@@ -11,7 +11,7 @@ const Book = ({ book, handleRemoveBook }) => {
         <div className="author">Author</div>
         <div className="btns flex">
           <p>Comments</p>
-          <button type="button" onClick={() => handleRemoveBook(book)}>
+          <button type="button" onClick={() => handleRemove(id)}>
             Remove
           </button>
           <p>Edit</p>
@@ -45,7 +45,7 @@ Book.propTypes = {
     title: PropTypes.string,
     category: PropTypes.string,
   }).isRequired,
-  handleRemoveBook: PropTypes.func,
+  handleRemove: PropTypes.func,
 }
 
 export default Book;
