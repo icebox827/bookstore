@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const CategoryFilter = ({filterChange}) => {
-  const category = [
+  const categories = [
     'All',
     'Action',
     'Biography',

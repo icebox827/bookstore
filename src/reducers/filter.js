@@ -1,6 +1,6 @@
 import { FILTER_BOOK } from '../actions/action';
 
-const filterReducer = (state=false, action) => {
+const filterReducer = (state='All', action) => {
   switch (action.type) {
     case FILTER_BOOK:
       return action.payload;

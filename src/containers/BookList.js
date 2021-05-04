@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -7,37 +7,30 @@ import CategoryFilter from '../components/CategoryFilter';
 import { removeBook, filterBook } from '../actions/index';
 
 const BookList = ({ books, removeBook, filter, filterBook }) => {
-  let bookItems = [...books];
-
-  bookItems = books.map(book => (
-    <Book key={book.id} book={book} handleRemove={handleRemoveBook} />
-  ));
-
   const handleRemoveBook = book => {
     removeBook(book);
-  }
+  };
+  
+  const bookItems = () => createFilter().map(book => (
+    <Book key={book.id} book={book} handleRemove={handleRemoveBook} />
+  ));
 
   const handleFilterChange = filter => {
     filterBook(filter);
   };
 
-  if (filter) {
-    bookItems = bookItems.filter(book => book.category === filter);
+  const createFilter = () => {
+    if (filter !== 'All') {
+      return books.filter(book => book.category === filter);
+    }
+    return books;
   }
-
+  
   return (
-    <div>
+    <div className="list-container v-flex">
       <CategoryFilter filterChange={handleFilterChange} />
       <table className="table">
-        <tr>
-          <th scope="col">Book ID</th>
-          <th scope="col">Title</th>
-          <th scope="col">Category</th>
-          <th scope="col">Remove</th>
-        </tr>
-        <tr>
-          <td>{bookItems}</td>
-        </tr>
+        <tbody>{bookItems()}</tbody>
       </table>
     </div>
   )
@@ -61,16 +54,17 @@ BookList.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  books: state.books
+  books: state.books,
+  filter: state.filter,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeBook: () => {
-      dispatch(removeBook());
+    removeBook: (book) => {
+      dispatch(removeBook(book));
     },
-    filterBook: () => {
-      dispatch(filterBook())
+    filterBook: (book) => {
+      dispatch(filterBook(book))
     },
   }
 };
