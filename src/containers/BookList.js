@@ -10,7 +10,7 @@ const BookList = ({ books, removeBook, filter, filterBook }) => {
   const handleRemoveBook = book => {
     removeBook(book);
   }
-  console.log(books)
+  
   const bookItems = () => createFilter().map(book => (
     <Book key={book.id} book={book} handleRemove={handleRemoveBook} />
   ));
@@ -60,8 +60,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeBook: () => {
-      dispatch(removeBook());
+    removeBook: (book) => {
+      dispatch(removeBook(book));
     },
     filterBook: (book) => {
       dispatch(filterBook(book))
