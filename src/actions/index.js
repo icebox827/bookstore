@@ -12,7 +12,7 @@ const removeBook = book => ({
 
 const filterBook = filter => ({
   type: FILTER_BOOK,
-  payload: filter
+  payload: filter,
 });
 
 export { addBook, removeBook, filterBook };
