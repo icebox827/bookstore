@@ -35,33 +35,7 @@ const Book = ({ book, handleRemoveBook }) => {
           <button type="submit" className="progress-btn">UPDATE PROGRESS</button>
         </div>
       </div>
-
-      
     </div>
-    // <div className="book-container flex">
-    //   <table>
-    //     <tr className="title-container ">
-    //       <th>{id}</th>
-    //       <th className="title">{title}</th>
-    //       <th className="category">{category}</th>
-    //       <th className="author">Author</th>
-    //     </tr>
-    //     <tr>
-    //       <td>
-    //         <button 
-    //           type="button" 
-    //           className="btns flex"
-    //           onClick={() => handleRemoveBook(book)}
-    //         >
-    //           Remove
-    //         </button>
-    //       </td>
-    //       <td>
-    //         Edit
-    //       </td>
-    //     </tr>
-    //   </table>
-    // </div>
   )
 };
 
