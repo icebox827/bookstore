@@ -1,8 +1,18 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { addBook } from '../actions/index'
+
+const categories = [
+  'Action',
+  'Biography',
+  'History',
+  'Horror',
+  'Kids',
+  'Learning',
+  'Sci-Fi'
+];
 
 const BookForm = ({ addBook }) => {
   const [book, setBook] = useState({
@@ -10,25 +20,15 @@ const BookForm = ({ addBook }) => {
     category: '',
     id: Math.floor((Math.random() * 100) + 1),
   });
-  
-  const categories = [
-    'Action',
-    'Biography',
-    'History',
-    'Horror',
-    'Kids',
-    'Learning',
-    'Sci-Fi'
-  ];
 
-  const selectedCategories = categories.map(category => <option key={category}>{category}</option>);
-  const { title, category } = book;
+  const selectedCategories = categories.map(category => <option key={category} value={category}>{category}</option>);
 
   const handleChange = e => {
-    setBook({
-      ...book,
-      [e.target.value]: e.target.value,
-    });
+    setBook(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+    console.log(e.target.value)
   };
 
   const handleSubmit = e => {
@@ -50,10 +50,11 @@ const BookForm = ({ addBook }) => {
           <input 
             type='text' 
             id='text'
+            name="title"
             className="title-field"
             placeholder="Please enter the book title" 
             onChange={handleChange}
-            value={title}
+            value={book.title}
           />
           <br />
           <br />
@@ -62,8 +63,8 @@ const BookForm = ({ addBook }) => {
             className="category-field"
             id="category"
             name="category"
-            onClick={handleChange}
-            value={category}
+            onChange={handleChange}
+            value={book.category}
           >
             {selectedCategories}
           </select>

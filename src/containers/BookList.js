@@ -7,13 +7,11 @@ import CategoryFilter from '../components/CategoryFilter';
 import { removeBook, filterBook } from '../actions/index';
 
 const BookList = ({ books, removeBook, filter, filterBook }) => {
-  let bookItems = [...books];
-
   const handleRemoveBook = book => {
     removeBook(book);
   }
 
-  bookItems = books.map(book => (
+  const bookItems = () => createFilter().map(book => (
     <Book key={book.id} book={book} handleRemove={handleRemoveBook} />
   ));
 
@@ -21,16 +19,19 @@ const BookList = ({ books, removeBook, filter, filterBook }) => {
     filterBook(filter);
   };
 
-  if (filter) {
-    bookItems = bookItems.filter(book => book.category === filter);
+  const createFilter = () => {
+    if (filter !== 'All') {
+      return books.filter(book => book.category === filter);
+    }
+    return books;
   }
-
+  
   return (
     <div className="list-container v-flex">
       <CategoryFilter filterChange={handleFilterChange} />
       <table className="table">
         <tr>
-          <td>{bookItems}</td>
+          <td>{bookItems()}</td>
         </tr>
       </table>
     </div>
@@ -50,24 +51,24 @@ BookList.propTypes = {
   filter: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
 };
 
-// BookList.defaultProps = {
-//   books: [],
-// };
+BookList.defaultProps = {
+  books: [],
+};
 
 const mapStateToProps = state => ({
   books: state.books,
   filter: state.filter,
 });
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     removeBook: () => {
-//       dispatch(removeBook());
-//     },
-//     filterBook: () => {
-//       dispatch(filterBook(null))
-//     },
-//   }
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    removeBook: () => {
+      dispatch(removeBook());
+    },
+    filterBook: (book) => {
+      dispatch(filterBook(book))
+    },
+  }
+};
 
-export default  connect(mapStateToProps, { removeBook, filterBook })(BookList);
+export default  connect(mapStateToProps, mapDispatchToProps)(BookList);
