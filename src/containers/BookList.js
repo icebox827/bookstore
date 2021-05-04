@@ -3,9 +3,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Book from '../components/Book';
+import { removeBook } from '../actions/index'
 
-const BookList = ({ books }) => {
-  const bookItems = books.map(book => <Book key={book.id} book={book} />);
+const BookList = ({ books, removeBook }) => {
+  const bookItems = books.map(book => (
+    <Book key={book.id} book={book} handleRemove={handleRemoveBook} />
+  ));
+
+  const handleRemoveBook = book => {
+    removeBook(book);
+  }
 
   return (
     <div>
@@ -14,6 +21,7 @@ const BookList = ({ books }) => {
           <th scope="col">Book ID</th>
           <th scope="col">Title</th>
           <th scope="col">Category</th>
+          <th scope="col">Remove</th>
         </tr>
         <tr>
           <td>{bookItems}</td>
@@ -30,11 +38,24 @@ BookList.propTypes = {
       title: PropTypes.string,
       category: PropTypes.string,
     }),
-  ).isRequired
+  ).isRequired,
+  removeBook: PropTypes.func.isRequired,
+};
+
+BookList.defaultProps = {
+  books: [],
 };
 
 const mapStateToProps = state => ({
   books: state.books
-})
+});
 
-export default  connect(mapStateToProps, null)(BookList);
+const mapDispatchToProps = dispatch => {
+  return {
+    removeBook: () => {
+      dispatch(removeBook());
+    },
+  }
+};
+
+export default  connect(mapStateToProps, mapDispatchToProps)(BookList);
