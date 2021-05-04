@@ -30,9 +30,7 @@ const BookList = ({ books, removeBook, filter, filterBook }) => {
     <div className="list-container v-flex">
       <CategoryFilter filterChange={handleFilterChange} />
       <table className="table">
-        <tr>
-          <td>{bookItems()}</td>
-        </tr>
+        <tbody>{bookItems()}</tbody>
       </table>
     </div>
   )
