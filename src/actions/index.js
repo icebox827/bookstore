@@ -1,4 +1,4 @@
-import { CREATE_BOOK, CHANGE_FILTER, REMOVE_BOOK } from './action';
+import { CREATE_BOOK, FILTER_BOOK, REMOVE_BOOK } from './action';
 
 const addBook = book => ({
   type: CREATE_BOOK,
@@ -11,7 +11,7 @@ const removeBook = book => ({
 });
 
 const filterBook = filter => ({
-  type: CHANGE_FILTER,
+  type: FILTER_BOOK,
   payload: filter,
 });
 
