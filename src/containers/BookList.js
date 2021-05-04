@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -26,15 +26,9 @@ const BookList = ({ books, removeBook, filter, filterBook }) => {
   }
 
   return (
-    <div>
+    <div className="list-container v-flex">
       <CategoryFilter filterChange={handleFilterChange} />
       <table className="table">
-        <tr>
-          <th scope="col">Book ID</th>
-          <th scope="col">Title</th>
-          <th scope="col">Category</th>
-          <th scope="col">Remove</th>
-        </tr>
         <tr>
           <td>{bookItems}</td>
         </tr>
@@ -56,23 +50,24 @@ BookList.propTypes = {
   filter: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
 };
 
-BookList.defaultProps = {
-  books: [],
-};
+// BookList.defaultProps = {
+//   books: [],
+// };
 
 const mapStateToProps = state => ({
-  books: state.books
+  books: state.books,
+  filter: state.filter,
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    removeBook: () => {
-      dispatch(removeBook());
-    },
-    filterBook: () => {
-      dispatch(filterBook())
-    },
-  }
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     removeBook: () => {
+//       dispatch(removeBook());
+//     },
+//     filterBook: () => {
+//       dispatch(filterBook(null))
+//     },
+//   }
+// };
 
-export default  connect(mapStateToProps, mapDispatchToProps)(BookList);
+export default  connect(mapStateToProps, { removeBook, filterBook })(BookList);

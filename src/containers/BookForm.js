@@ -42,15 +42,15 @@ const BookForm = ({ addBook }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="form-container v-flex">
+      <form id="form" className="form flex" onSubmit={handleSubmit}>
         <fieldset>
-          <legend>Add Book</legend>
+          <legend className="form-heading">Add Book</legend>
           <label className="form-label">Book Title</label>
           <input 
             type='text' 
             id='text'
-            className='inputbook'
+            className="title-field"
             placeholder="Please enter the book title" 
             onChange={handleChange}
             value={title}
@@ -59,7 +59,7 @@ const BookForm = ({ addBook }) => {
           <br />
           <label className="form-label">Select a category</label>
           <select
-            className="option"
+            className="category-field"
             id="category"
             name="category"
             onClick={handleChange}
@@ -67,7 +67,7 @@ const BookForm = ({ addBook }) => {
           >
             {selectedCategories}
           </select>
-          <button type='submit' className="btn">
+          <button type='submit'  className="add-btn">
             Submit
           </button>
         </fieldset>

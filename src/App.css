@@ -11,6 +11,7 @@
 
 body {
   padding-bottom: 10vh;
+  background-color: rgb(248, 246, 244);
 }
 
 .v-flex,
@@ -235,6 +236,13 @@ hr {
   width: 70vw;
   justify-content: space-between;
   margin: 10px 0;
+  background-color: white;
+}
+
+.form-label {
+  margin-right: 10px;
+  margin-left: 5px;
+  padding-bottom: 10px;;
 }
 
 .category-field,
