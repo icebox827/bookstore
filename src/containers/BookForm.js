@@ -43,7 +43,7 @@ const BookForm = ({ addBook }) => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <fieldset>
           <legend>Add Book</legend>
           <label className="form-label">Book Title</label>
@@ -67,7 +67,7 @@ const BookForm = ({ addBook }) => {
           >
             {selectedCategories}
           </select>
-          <button type='submit' onClick={handleSubmit} className="btn">
+          <button type='submit' className="btn">
             Submit
           </button>
         </fieldset>
