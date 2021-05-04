@@ -28,7 +28,6 @@ const BookForm = ({ addBook }) => {
       ...prev,
       [e.target.name]: e.target.value,
     }));
-    console.log(e.target.value)
   };
 
   const handleSubmit = e => {
@@ -79,8 +78,8 @@ const BookForm = ({ addBook }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addBook: () => {
-      dispatch(addBook());
+    addBook: (book) => {
+      dispatch(addBook(book));
     },
   }
 };
