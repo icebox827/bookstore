@@ -9,13 +9,13 @@ import { removeBook, filterBook } from '../actions/index';
 const BookList = ({ books, removeBook, filter, filterBook }) => {
   let bookItems = [...books];
 
-  bookItems = books.map(book => (
-    <Book key={book.id} book={book} handleRemove={handleRemoveBook} />
-  ));
-
   const handleRemoveBook = book => {
     removeBook(book);
   }
+
+  bookItems = books.map(book => (
+    <Book key={book.id} book={book} handleRemove={handleRemoveBook} />
+  ));
 
   const handleFilterChange = filter => {
     filterBook(filter);
