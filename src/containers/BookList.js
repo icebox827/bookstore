@@ -17,7 +17,7 @@ const BookList = ({ books, removeBook, filter, filterBook }) => {
     removeBook(book);
   }
 
-  const handleFilter = filter => {
+  const handleFilterChange = filter => {
     filterBook(filter);
   };
 
@@ -27,7 +27,7 @@ const BookList = ({ books, removeBook, filter, filterBook }) => {
 
   return (
     <div>
-      <CategoryFilter filterChange={handleFilter} />
+      <CategoryFilter filterChange={handleFilterChange} />
       <table className="table">
         <tr>
           <th scope="col">Book ID</th>
