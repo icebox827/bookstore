@@ -8,7 +8,7 @@ const BookForm = ({ addBook }) => {
   const [book, setBook] = useState({
     title: '',
     category: '',
-    id: Math.floor((Math.random() * 10000) + 1),
+    id: Math.floor((Math.random() * 100) + 1),
   });
   
   const categories = [
